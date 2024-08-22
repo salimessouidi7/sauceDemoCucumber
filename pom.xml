@@ -79,10 +79,11 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>CucumberSeleniumJava-Saucedemo</projectName>
-                            <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
+                            <projectName>sauceDemoCucumber</projectName>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                        	<inputDirectory>${project.build.directory}</inputDirectory>
                             <jsonFiles>
-                                <jsonFile>${project.build.directory}/cucumber.json</jsonFile>
+                                <jsonFile>**/*.json</jsonFile>
                             </jsonFiles>
                         </configuration>
                     </execution>
