@@ -27,12 +27,14 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y google-chrome-stable
 
-    - name: Cache Maven packages
-      uses: actions/cache@v2
-      with:
-        path: ~/.m2
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: ${{ runner.os }}-maven
+    # Temporarily remove or comment out the cache step
+# - name: Cache Maven packages
+#   uses: actions/cache@v2
+#   with:
+#     path: ~/.m2
+#     key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+#     restore-keys: ${{ runner.os }}-maven
+
 
     - name: Install project dependencies
       run: mvn install -DskipTests
@@ -42,4 +44,4 @@ jobs:
         DISPLAY: :99
       run: |
         Xvfb :99 -ac &
-        mvn clean verify
+        mvn clean verify -x
