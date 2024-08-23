@@ -27,20 +27,14 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y google-chrome-stable
 
-    - name: Cache Maven packages
-      uses: actions/cache@v2
+    - name: Build with Maven
+      run: mvn clean verify -Dtestng.dtd.http=true
+    - uses: deblockt/cucumber-report-annotations-action@v1.7
       with:
-        path: ~/.m2
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: ${{ runner.os }}-maven
-
-
-    - name: Install project dependencies
-      run: mvn clean install -DskipTests
-
-    - name: Run tests
-      env:
-        DISPLAY: :99
-      run: |
-        Xvfb :99 -ac &
-        mvn clean test
+        access-token: ${{ secrets.GITHUB_TOKEN }}
+        path: "**/cucumber.json"
+    - name: Deploy report page to GitHub Page
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./target
