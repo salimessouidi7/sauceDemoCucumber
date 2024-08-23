@@ -28,7 +28,7 @@ jobs:
         sudo apt-get install -y google-chrome-stable
 
     - name: Build with Maven
-      run: mvn clean install
+      run: mvn clean install -DskipTests
     
     - name: Run tests
       env:
