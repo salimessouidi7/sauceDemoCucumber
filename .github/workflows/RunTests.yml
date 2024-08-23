@@ -43,4 +43,4 @@ jobs:
         DISPLAY: :99
       run: |
         Xvfb :99 -ac &
-        mvn clean verify -x
+        mvn clean test
