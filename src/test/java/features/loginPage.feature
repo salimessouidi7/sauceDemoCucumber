@@ -7,7 +7,6 @@ Feature: User Login
   I want to log in to the application
   So that I can access my account.
 
-  @ValidCredentials
   Scenario Outline: Login with valid credentials
     Given the user is on the login page
     When the user enters "<username>" and "<password>"
