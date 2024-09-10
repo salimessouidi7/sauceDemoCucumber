@@ -35,7 +35,7 @@ jobs:
         DISPLAY: :99
       run: |
         Xvfb :99 -ac &
-        mvn clean verify
+        mvn verify
         
     - uses: deblockt/cucumber-report-annotations-action@v1.7
       with:
